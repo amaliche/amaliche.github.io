@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <meta charset='utf-8'>
+  <title>ScaleOut</title>
+<!--
+  <script src='/lib/jquery-2.1.1.js'></script>
+-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  
+</head>
+<div>
+  <a href='https://google.com/'>https://google.com/</a>
+  <a href='https://google.com/' target='_self'>self</a>
+</div>
+<div>
+  <a href='http://scaleout.jp/'>http://scaleout.jp/</a>
+  <a href='http://scaleout.jp/' target='_self'>self</a>
+</div>
+
+
+<script src='http://i.socdm.com/s/so_redirector.js'></script>
+
+<!--
+<script src='https://dl.dropboxusercontent.com/u/347380/so/redirect/re.js'></script>
+<script src='https://ssl.socdm.com/s/so_redirector.js'></script>
+<script src='http://i.socdm.com/s/so_redirector.js'></script>
+-->
+
+<script>
+  SoRedirector.customEventListener = function(soRedirector) {
+    console.log('custom')
+    $(document).on('click', 'a[href]', function() {
+      console.log('click', soRedirector.appendRedirector($(this).attr('href')));
+      $(this).attr('href', soRedirector.appendRedirector($(this).attr('href')));
+    });
+  };
+</script>
